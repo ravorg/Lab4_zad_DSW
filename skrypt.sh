@@ -1,10 +1,12 @@
 #!/bin/bash
 
-ARGS=$(getopt -a --options dlhi --long "date,logs,help,innit" -- "$@")
+ARGS=$(getopt -a --options dlhie --long "date,logs,help,innit,error" -- "$@")
 eval set -- "$ARGS"
 date="false"
 logs="false"
 help="false"
+innit="false"
+error="false"
 while true; do
   case "$1" in
     -d | --date)
@@ -41,6 +43,28 @@ while true; do
       echo "export PATH=\$PATH:$SKRYPT_DIR" >> ~/.bashrc
       source ~/.bashrc
       echo "Inicjalizacja zakończona."
+      innit="true"
+      shift;;
+    -e | --errors)
+        if [[ $3 -eq 0 ]]; then
+            for ((i=1; i<=100; i++))
+            do
+                filename="error${i}.txt"
+                echo "Nazwa pliku: $filename" > $filename
+                echo "Nazwa skryptu: skrypt.sh" >> $filename
+                echo "Data utworzenia: $(date)" >> $filename
+            done
+        fi
+        liczbaplik=$3
+        for ((i=1; i<=liczbaplik; i++))
+        do
+            filename="error${i}.txt"
+            echo "Nazwa pliku: $filename" > $filename
+            echo "Nazwa skryptu: skrypt.sh" >> $filename
+            echo "Data utworzenia: $(date)" >> $filename
+        done
+      error="true"
+      shift;;
     --)
       break;;
      *)
