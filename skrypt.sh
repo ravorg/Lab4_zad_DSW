@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ARGS=$(getopt -a --options dlh --long "date,logs,help" -- "$@")
+ARGS=$(getopt -a --options dlhi --long "date,logs,help,innit" -- "$@")
 eval set -- "$ARGS"
 date="false"
 logs="false"
@@ -35,6 +35,12 @@ while true; do
         echo "Dostępne opcje: [--date Data] [--logs [x] Tworzy [x] plików] [--help Wyświetla pomoc]"
       help="true"
       shift;;
+    -i | --innit)
+      git https://github.com/ravorg/Lab4_zad_DSW.git
+      SKRYPT_DIR=$(pwd)
+      echo "export PATH=\$PATH:$SKRYPT_DIR" >> ~/.bashrc
+      source ~/.bashrc
+      echo "Inicjalizacja zakończona."
     --)
       break;;
      *)
