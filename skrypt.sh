@@ -4,7 +4,6 @@ ARGS=$(getopt -a --options dl --long "data,logs" -- "$@")
 eval set -- "$ARGS"
 date="false"
 logs="false"
-help="false"
 while true; do
   case "$1" in
     --data)
@@ -34,7 +33,7 @@ while true; do
     --)
       break;;
      *)
-      printf "Błędna opcja %s\nDostępne opcje: [-d --data Data] [-l --logs Tworzy plików] [-h --help Wyświetla pomoc]" "$1"
+      printf "Błędna opcja %s\nDostępne opcje: [--data Data] [--logs Tworzy plików]" "$1"
       exit 1;;
   esac
 done
