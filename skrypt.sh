@@ -7,11 +7,11 @@ logs="false"
 help="false"
 while true; do
   case "$1" in
-    --date)
+    -d | --date)
         echo $(date)
       date="true"
       shift;;
-    --logs)
+    -l | --logs)
         if [[ $3 -eq 0 ]]; then
             for ((i=1; i<=100; i++))
             do
@@ -31,7 +31,7 @@ while true; do
         done
       logs="true"
       shift;;
-    --help)
+    -h | --help)
         echo "Dostępne opcje: [--date Data] [--logs [x] Tworzy [x] plików] [--help Wyświetla pomoc]"
       help="true"
       shift;;
