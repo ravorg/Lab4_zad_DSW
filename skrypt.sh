@@ -32,13 +32,13 @@ while true; do
       logs="true"
       shift;;
     -h | --help)
-        echo "Dostępne opcje: [--date Data] [--logs [x] Tworzy [x] plików] [--help Wyświetla pomoc]"
+        echo "Dostępne opcje: [-d --date Data] [-l --logs [x] Tworzy [x] plików] [-h --help Wyświetla pomoc]"
       help="true"
       shift;;
     --)
       break;;
      *)
-      printf "Błędna opcja %s\nDostępne opcje: [--date Data] [--logs Tworzy plików] [--help Wyświetla pomoc]" "$1"
+      printf "Błędna opcja %s\nDostępne opcje: [-d --date Data] [-l --logs Tworzy plików] [-h --help Wyświetla pomoc]" "$1"
       exit 1;;
   esac
 done
